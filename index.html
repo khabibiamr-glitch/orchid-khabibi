@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan: Orchid & Khabibi</title>
-    <!-- Google Fonts: Playfair Display (Elegan Serif) & Montserrat (Bersih Sans-serif) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -14,543 +14,88 @@
             --dark-bg: #1A1A1A; 
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            font-weight: 300;
-        }
-
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-        }
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--text-color); font-weight: 300; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 400; }
 
         /* --- Welcome Page --- */
         #welcome-page {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: var(--bg-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            text-align: center;
-            transition: opacity 0.8s ease;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; text-align: center; transition: opacity 0.8s ease;
         }
-
-        .welcome-subtitle {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            margin-bottom: 0;
-        }
-
-        .welcome-names {
-            font-size: 3.5rem;
-            margin: 10px 0;
-            line-height: 1.1;
-        }
-
-        .guest-box {
-            margin: 30px 0;
-            padding: 20px 40px;
-            border-top: 1px solid var(--text-color);
-            border-bottom: 1px solid var(--text-color);
-        }
-
-        .guest-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--text-color);
-            padding: 12px 35px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.4s;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-        }
-
-        .btn-solid {
-            background-color: var(--dark-bg);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .btn-solid:hover { background-color: #333; }
+        .welcome-names { font-size: 3.5rem; margin: 10px 0; }
+        .btn-solid { background-color: var(--dark-bg); color: white; border: none; padding: 15px 35px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
 
         /* --- Main Content --- */
-        #main-content {
-            display: none;
-        }
+        #main-content { display: none; }
+        section { padding: 80px 20px; text-align: center; max-width: 600px; margin: 0 auto; }
 
-        section {
-            padding: 80px 20px;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-        }
-
-        /* Hero Cover */
+        /* Hero */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%), url('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27');
-            background-size: cover;
-            background-position: center;
-            padding-bottom: 10vh;
-            color: white;
-            background-color: #333;
-            background-blend-mode: luminosity; 
+            height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%), #333;
+            background-size: cover; background-position: center; padding-bottom: 10vh; color: white;
         }
+        .hero h1 { font-size: 4rem; margin: 0; }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin: 0;
-            line-height: 1.1;
-        }
+        /* Galeri */
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 30px; }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .gallery-item:hover img { filter: grayscale(0%); }
 
-        .hero p {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            margin-top: 20px;
-            text-transform: uppercase;
-        }
-
-        .divider {
-            font-style: italic;
-            color: #999;
-            margin: 40px 0;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%;
-            width: 1px; height: 100%;
-            background-color: #ccc;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-            background-color: var(--bg-color); 
-            padding: 10px 0;
-        }
-
-        .time {
-            font-size: 2rem;
-            margin: 0;
-        }
-
-        .event-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 5px 0;
-            font-weight: 400;
-        }
-
-        .location-box {
-            margin-top: 50px;
-            padding: 30px;
-            border: 1px solid var(--text-color);
-        }
-
-        /* Galeri Foto */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            transition: 0.5s ease;
-            filter: grayscale(100%); 
-        }
-
-        .gallery-item:hover img {
-            filter: grayscale(0%); 
-            transform: scale(1.05);
-        }
-
-        /* Modal Lightbox */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 10000;
-            padding-top: 60px;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); 
-            overflow: auto;
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 80vh;
-            transition: transform 0.3s ease;
-            cursor: zoom-in;
-            object-fit: contain;
-            filter: grayscale(0%); 
-        }
-
-        .modal-content.zoomed {
-            transform: scale(2);
-            cursor: zoom-out;
-            max-height: none;
-            margin-top: 50px; margin-bottom: 50px;
-        }
-
-        .close-btn {
-            position: fixed;
-            top: 20px; right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: 300;
-            cursor: pointer;
-            z-index: 10001;
-        }
-
-        .close-btn:hover { color: var(--bg-color); }
-
-        /* Amplop Digital */
-        .wallet-card {
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #ddd;
-            background: transparent;
-        }
-
-        .rekening {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
-
-        /* RSVP Form */
-        .rsvp-form {
-            text-align: left;
-            margin-top: 40px;
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #ccc;
-            border-radius: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            color: var(--text-color);
-            outline: none;
-            transition: 0.3s;
-        }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-bottom: 1px solid var(--text-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-bg);
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .footer-photo {
-            width: 140px;
-            height: 180px;
-            object-fit: cover;
-            margin-bottom: 25px;
-            filter: grayscale(100%);
-            border: 1px solid #444;
-            padding: 5px;
-        }
-
-        .footer-names {
-            font-size: 3rem;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 3.5rem; }
-            .welcome-names { font-size: 2.8rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .gallery-item img { height: 300px; }
-            .modal-content.zoomed { transform: scale(2.5); }
-        }
+        /* Form */
+        .rsvp-form input, .rsvp-form select, .rsvp-form textarea { width: 100%; padding: 10px 0; background: transparent; border: none; border-bottom: 1px solid #ccc; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-    <!-- 1. Welcome Page -->
     <div id="welcome-page">
-        <p class="welcome-subtitle">The Wedding Of</p>
-        <h1 class="welcome-names serif">Orchid<br>&<br>Khabibi</h1>
-        
-        <div class="guest-box">
-            <p style="font-size: 0.8rem; margin:0; text-transform: uppercase; letter-spacing: 1px;">Kepada Yth:</p>
-            <div id="guest-name" class="guest-name">Tamu Undangan</div>
-        </div>
-
-        <!-- Tombol diperbarui menggunakan ID untuk JavaScript (Mencegah error di GitHub Pages) -->
+        <p>THE WEDDING OF</p>
+        <h1 class="welcome-names serif">Orchid & Khabibi</h1>
         <button id="btn-buka" class="btn-solid">Buka Undangan</button>
     </div>
 
-    <!-- 2. Main Invitation Content -->
     <div id="main-content">
-        
-        <!-- Hero Section -->
-        <section class="hero" style="max-width: 100%; padding-left: 0; padding-right: 0; margin-top:0; padding-top:0;">
+        <section class="hero">
             <h1 class="serif">Orchid<br>&<br>Khabibi</h1>
             <p>9 Agustus 2026</p>
         </section>
 
-        <!-- Event Details (Timeline) -->
-        <section id="event">
-            <h2 class="serif section-title">Puncak Acara</h2>
-            <div class="divider">//</div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <p class="time serif">18:30</p>
-                    <p class="event-title">Akad Nikah</p>
-                    <p style="font-size: 0.8rem; color: #666; margin: 0;">Penyatuan dua insan dalam ikatan suci</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <p class="time serif">20:00</p>
-                    <p class="event-title">Resepsi</p>
-                    <p style="font-size: 0.8rem; color: #666; margin: 0;">Malam perayaan dan rasa syukur</p>
-                </div>
-            </div>
-
-            <div class="location-box">
-                <h3 class="serif" style="margin-top:0; font-size: 1.5rem;">Lokasi</h3>
-                <p style="font-size: 0.9rem; line-height: 1.6;">
-                    <strong>Nyiur Melambai Restaurant</strong><br>
-                    Jl. A.A. Maramis No.69, Kairagi Dua,<br>Kec. Mapanget, Kota Manado
-                </p>
-                <a href="https://maps.app.goo.gl/kzaupnKcs2JyPKPKA" target="_blank" class="btn-outline" style="display: inline-block; text-decoration: none; margin-top: 15px; border-color: #999; color: #555;">
-                    Buka Peta Google
-                </a>
-            </div>
+        <section>
+            <h2 class="serif">Puncak Acara</h2>
+            <p>18:30 - Akad Nikah</p>
+            <p>20:00 - Resepsi</p>
+            <p>Nyiur Melambai Restaurant, Manado</p>
         </section>
 
-        <!-- Galeri Foto -->
-        <section id="galeri">
-            <h2 class="serif section-title">Galeri</h2>
-            
+        <section>
+            <h2 class="serif">Galeri</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
-                    <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri">
-                </div>
-                <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
-                    <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri">
-                </div>
-                <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
-                    <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri">
-                </div>
-                <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
-                    <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri">
-                </div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=500&q=80" alt="Galeri"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=500&q=80" alt="Galeri"></div>
             </div>
         </section>
 
-        <!-- Elemen Pop-up (Lightbox) -->
-        <div id="imageModal" class="modal" onclick="closeModal()">
-            <span class="close-btn">&times;</span>
-            <img class="modal-content" id="img01" onclick="toggleZoom(event)">
-            <div style="text-align: center; color: #ccc; margin-top: 10px; font-size: 0.9rem;">Ketuk gambar untuk perbesar/perkecil</div>
-        </div>
-
-        <!-- Amplop Digital -->
-        <section id="amplop">
-            <h2 class="serif section-title">Tanda Kasih</h2>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 30px;">Kehadiran dan doa restu Anda adalah anugerah terindah. Namun jika Anda ingin memberikan tanda kasih, dapat melalui:</p>
-            
-            <div class="wallet-card">
-                <p style="margin:0; text-transform:uppercase; font-size: 0.8rem; letter-spacing: 1px;">BCA</p>
-                <div class="rekening" id="rek1">1234567890</div>
-                <p style="margin: 0 0 15px 0; font-size: 0.8rem;">Orchid Evangelica Waskito</p>
-                <button class="btn-outline" style="padding: 8px 20px; font-size: 0.8rem;" onclick="copyRekening('rek1')">Salin Rekening</button>
-            </div>
-
-            <div class="wallet-card">
-                <p style="margin:0; text-transform:uppercase; font-size: 0.8rem; letter-spacing: 1px;">Mandiri</p>
-                <div class="rekening" id="rek2">0987654321</div>
-                <p style="margin: 0 0 15px 0; font-size: 0.8rem;">Khabibi Amrulloh</p>
-                <button class="btn-outline" style="padding: 8px 20px; font-size: 0.8rem;" onclick="copyRekening('rek2')">Salin Rekening</button>
-            </div>
-        </section>
-
-        <!-- Konfirmasi Kehadiran & Buku Tamu (Hanya Bekerja di Netlify) -->
-        <section id="rsvp">
-            <h2 class="serif section-title">Kehadiran</h2>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 40px;">Sebuah kehormatan bagi kami apabila Anda berkenan hadir.</p>
-            
-            <form class="rsvp-form" name="buku-tamu" method="POST" data-netlify="true">
-                <div class="form-group">
-                    <label for="nama">Nama Anda</label>
-                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap">
-                </div>
-
-                <div class="form-group">
-                    <label for="kehadiran">Konfirmasi Kehadiran</label>
-                    <select id="kehadiran" name="kehadiran" required>
-                        <option value="" disabled selected>Pilih kehadiran</option>
-                        <option value="Hadir">Ya, saya akan hadir</option>
-                        <option value="Tidak Hadir">Maaf, saya tidak bisa hadir</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="pesan">Pesan & Doa</label>
-                    <textarea id="pesan" name="pesan" rows="3" required placeholder="Tuliskan sesuatu..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-solid" style="width: 100%;">Kirim Pesan</button>
+        <section>
+            <h2 class="serif">Buku Tamu</h2>
+            <form class="rsvp-form">
+                <input type="text" placeholder="Nama Anda">
+                <select><option>Hadir</option><option>Tidak Hadir</option></select>
+                <textarea placeholder="Pesan & Doa"></textarea>
+                <button type="button" class="btn-solid">Kirim Pesan</button>
             </form>
         </section>
-
-        <!-- Footer -->
-        <footer>
-            <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Orchid & Khabibi" class="footer-photo">
-            <h2 class="serif footer-names">Orchid<br><span style="font-family: 'Montserrat', sans-serif; font-size: 1rem; font-style: italic; letter-spacing: 1px;">and</span><br>Khabibi</h2>
-            <p style="font-size: 0.7rem; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; color: #999;">Kami menanti kehadiran Anda</p>
-        </footer>
-
     </div>
 
-    <!-- Scripts -->
     <script>
-        // 1. Mengambil Nama Tamu dari URL
-        document.addEventListener("DOMContentLoaded", function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const guestName = urlParams.get('to');
-            if (guestName) {
-                document.getElementById('guest-name').innerText = guestName;
-            }
+        document.getElementById('btn-buka').addEventListener('click', function() {
+            document.getElementById('welcome-page').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcome-page').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 800);
         });
-
-        // 2. Fungsi Buka Undangan (Menggunakan Event Listener agar aman dari blokir CSP)
-        const btnBuka = document.getElementById('btn-buka');
-        if (btnBuka) {
-            btnBuka.addEventListener('click', function() {
-                const welcomePage = document.getElementById('welcome-page');
-                const mainContent = document.getElementById('main-content');
-                
-                welcomePage.style.opacity = '0';
-                
-                setTimeout(() => {
-                    welcomePage.style.display = 'none';
-                    mainContent.style.display = 'block';
-                    window.scrollTo(0, 0);
-                }, 800);
-            });
-        }
-
-        // 3. Fungsi Pop-up Galeri (Lightbox)
-        function openModal(imageSrc) {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("img01");
-            modalImg.classList.remove("zoomed");
-            modal.style.display = "block";
-            modalImg.src = imageSrc;
-        }
-
-        // Fungsi Menutup Modal
-        function closeModal() {
-            const modal = document.getElementById("imageModal");
-            modal.style.display = "none";
-        }
-
-        // Fungsi Zoom ganda di dalam pop-up
-        function toggleZoom(event) {
-            event.stopPropagation(); 
-            const img = document.getElementById("img01");
-            img.classList.toggle("zoomed");
-        }
-
-        // 4. Fungsi Salin Nomor Rekening
-        function copyRekening(elementId) {
-            const textToCopy = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert("Nomor rekening berhasil disalin: " + textToCopy);
-            }).catch(err => {
-                console.error('Gagal menyalin teks: ', err);
-            });
-        }
     </script>
 </body>
 </html>
