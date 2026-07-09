@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan: Orchid & Khabibi</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display (Elegan Serif) & Montserrat (Bersih Sans-serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #F8F5F0; /* Krem lembut dari referensi */
+            --bg-color: #FAF7F2; /* Warna krem lembut seperti di referensi */
             --text-color: #2A2A2A; /* Hitam arang */
-            --dark-bg: #1A1A1A;
-            --accent: #D4C3B3;
+            --dark-bg: #1A1A1A; /* Latar gelap untuk footer */
         }
 
         body {
@@ -41,11 +40,19 @@
             align-items: center;
             z-index: 9999;
             text-align: center;
+            transition: opacity 0.8s ease;
+        }
+
+        .welcome-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 0;
         }
 
         .welcome-names {
             font-size: 3.5rem;
-            margin: 15px 0;
+            margin: 10px 0;
             line-height: 1.1;
         }
 
@@ -93,26 +100,32 @@
             margin: 0 auto;
         }
 
-        /* Hero Cover */
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Hero Cover (Sesuai Referensi Foto Paling Kiri) */
         .hero {
             height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%), url('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27');
+            /* Filter gelap & hitam putih bawaan CSS untuk foto utama */
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%), url('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27');
             background-size: cover;
             background-position: center;
             padding-bottom: 10vh;
             color: white;
-            /* Filter Hitam Putih Sesuai Referensi */
-            filter: grayscale(100%);
+            background-color: #333;
+            background-blend-mode: luminosity; /* Membuat foto jadi hitam putih */
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 4rem;
             margin: 0;
-            line-height: 1;
+            line-height: 1.1;
         }
 
         .hero p {
@@ -122,85 +135,14 @@
             text-transform: uppercase;
         }
 
-        /* Divider */
+        /* Divider & Calendar Visuals */
         .divider {
             font-style: italic;
             color: #999;
             margin: 40px 0;
         }
 
-        /* Countdown */
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .countdown div {
-            text-align: center;
-        }
-
-        .countdown span {
-            font-size: 2.5rem;
-            display: block;
-        }
-
-        .countdown p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0;
-        }
-
-        /* Calendar */
-        .calendar-container {
-            margin: 40px auto;
-            max-width: 300px;
-        }
-        
-        .calendar-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .weekdays, .days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .weekdays {
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            color: #777;
-            margin-bottom: 15px;
-        }
-
-        .days span {
-            padding: 5px 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-        }
-
-        .days .highlight {
-            border: 1px solid var(--text-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Timeline (Event Details) */
-        .timeline-section h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
+        /* Timeline (Event Details Sesuai Referensi Tengah) */
         .timeline {
             position: relative;
             max-width: 300px;
@@ -220,12 +162,11 @@
             margin-bottom: 50px;
             position: relative;
             z-index: 1;
-            background-color: var(--bg-color); /* Menutupi garis vertikal di tengah teks */
+            background-color: var(--bg-color); /* Menutupi garis vertikal */
             padding: 10px 0;
         }
 
         .time {
-            font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin: 0;
         }
@@ -238,23 +179,17 @@
             font-weight: 400;
         }
 
-        .event-desc {
-            font-size: 0.8rem;
-            color: #666;
-            margin: 0;
-        }
-
         .location-box {
             margin-top: 50px;
             padding: 30px;
             border: 1px solid var(--text-color);
         }
 
-        /* Galeri */
+        /* Galeri Foto */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 10px;
             margin-top: 30px;
         }
 
@@ -266,7 +201,7 @@
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
             display: block;
             transition: 0.5s ease;
@@ -278,7 +213,7 @@
             transform: scale(1.05);
         }
 
-        /* Modal Lightbox */
+        /* Modal Lightbox & Zoom Ganda */
         .modal {
             display: none; 
             position: fixed;
@@ -297,7 +232,7 @@
             transition: transform 0.3s ease;
             cursor: zoom-in;
             object-fit: contain;
-            filter: grayscale(0%);
+            filter: grayscale(0%); /* Saat diperbesar, tampil berwarna */
         }
 
         .modal-content.zoomed {
@@ -317,11 +252,14 @@
             z-index: 10001;
         }
 
+        .close-btn:hover { color: var(--bg-color); }
+
         /* Amplop Digital */
         .wallet-card {
             margin: 20px 0;
             padding: 20px;
             border: 1px solid #ddd;
+            background: transparent;
         }
 
         .rekening {
@@ -330,14 +268,14 @@
             margin: 10px 0;
         }
 
-        /* RSVP Form Minimalist */
+        /* RSVP Form Minimalist (Sesuai Referensi Kanan) */
         .rsvp-form {
             text-align: left;
             margin-top: 40px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .form-group label {
@@ -354,12 +292,17 @@
             padding: 10px 0;
             background: transparent;
             border: none;
-            border-bottom: 1px solid var(--text-color);
+            border-bottom: 1px solid #ccc;
             border-radius: 0;
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             color: var(--text-color);
             outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-bottom: 1px solid var(--text-color);
         }
 
         .btn-solid {
@@ -376,37 +319,37 @@
             transition: 0.3s;
         }
 
-        .btn-solid:hover {
-            background-color: #333;
-        }
+        .btn-solid:hover { background-color: #333; }
 
-        /* Footer */
+        /* Footer (Sesuai Referensi Kanan Bawah) */
         footer {
             background-color: var(--dark-bg);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
         }
 
         .footer-photo {
-            width: 120px;
-            height: 150px;
+            width: 140px;
+            height: 180px;
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             filter: grayscale(100%);
+            border: 1px solid #444;
+            padding: 5px;
         }
 
         .footer-names {
-            font-family: 'Playfair Display', serif;
             font-size: 3rem;
             margin: 0;
+            line-height: 1.2;
         }
 
         @media (max-width: 600px) {
             .hero h1 { font-size: 3.5rem; }
             .welcome-names { font-size: 2.8rem; }
             .gallery-grid { grid-template-columns: 1fr; }
-            .gallery-item img { height: 250px; }
+            .gallery-item img { height: 300px; }
             .modal-content.zoomed { transform: scale(2.5); }
         }
     </style>
@@ -415,8 +358,8 @@
 
     <!-- 1. Welcome Page -->
     <div id="welcome-page">
-        <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;">The Wedding Of</p>
-        <h1 class="welcome-names serif">Orchid & Khabibi</h1>
+        <p class="welcome-subtitle">The Wedding Of</p>
+        <h1 class="welcome-names serif">Orchid<br>&<br>Khabibi</h1>
         
         <div class="guest-box">
             <p style="font-size: 0.8rem; margin:0; text-transform: uppercase; letter-spacing: 1px;">Kepada Yth:</p>
@@ -435,70 +378,40 @@
             <p>9 Agustus 2026</p>
         </section>
 
-        <!-- Countdown & Calendar Section -->
-        <section>
-            <h2 class="serif" style="font-size: 2rem;">Menuju Hari Bahagia</h2>
-            
-            <div class="countdown">
-                <div><span id="days">00</span><p>Hari</p></div>
-                <div><span id="hours">00</span><p>Jam</p></div>
-                <div><span id="mins">00</span><p>Min</p></div>
-                <div><span id="secs">00</span><p>Det</p></div>
-            </div>
-
-            <div class="divider">//</div>
-
-            <div class="calendar-container">
-                <h3 class="serif calendar-title">Agustus 2026</h3>
-                <div class="weekdays">
-                    <span>Sn</span><span>Sl</span><span>Rb</span><span>Km</span><span>Jm</span><span>Sb</span><span>Mg</span>
-                </div>
-                <div class="days">
-                    <!-- Penyesuaian tanggal untuk Agustus 2026 (Mulai hari Sabtu) -->
-                    <span></span><span></span><span></span><span></span><span></span>
-                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
-                    <span class="highlight">9</span>
-                    <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
-                    <span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span>
-                    <span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
-                    <span>31</span>
-                </div>
-            </div>
-        </section>
-
         <!-- Event Details (Timeline) -->
-        <section class="timeline-section" id="event">
-            <h2 class="serif">Rangkaian Acara</h2>
+        <section id="event">
+            <h2 class="serif section-title">Puncak Acara</h2>
+            <div class="divider">//</div>
             
             <div class="timeline">
                 <div class="timeline-item">
-                    <p class="time">18:30</p>
+                    <p class="time serif">18:30</p>
                     <p class="event-title">Akad Nikah</p>
-                    <p class="event-desc">Momen suci mengikat janji sehidup semati</p>
+                    <p style="font-size: 0.8rem; color: #666; margin: 0;">Penyatuan dua insan dalam ikatan suci</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <p class="time">20:00</p>
+                    <p class="time serif">20:00</p>
                     <p class="event-title">Resepsi</p>
-                    <p class="event-desc">Malam perayaan cinta bersama keluarga & sahabat</p>
+                    <p style="font-size: 0.8rem; color: #666; margin: 0;">Malam perayaan dan rasa syukur</p>
                 </div>
             </div>
 
             <div class="location-box">
-                <h3 class="serif" style="margin-top:0;">Lokasi Acara</h3>
+                <h3 class="serif" style="margin-top:0; font-size: 1.5rem;">Lokasi</h3>
                 <p style="font-size: 0.9rem; line-height: 1.6;">
                     <strong>Nyiur Melambai Restaurant</strong><br>
-                    Jl. A.A. Maramis No.69, Kairagi Dua,<br>Kec. Mapanget, Kota Manado, Sulawesi Utara
+                    Jl. A.A. Maramis No.69, Kairagi Dua,<br>Kec. Mapanget, Kota Manado
                 </p>
-                <a href="https://maps.app.goo.gl/kzaupnKcs2JyPKPKA" target="_blank" class="btn-outline" style="display: inline-block; text-decoration: none; margin-top: 15px;">
-                    Lihat Peta
+                <a href="https://maps.app.goo.gl/kzaupnKcs2JyPKPKA" target="_blank" class="btn-outline" style="display: inline-block; text-decoration: none; margin-top: 15px; border-color: #999; color: #555;">
+                    Buka Peta Google
                 </a>
             </div>
         </section>
 
         <!-- Galeri Foto -->
         <section id="galeri">
-            <h2 class="serif" style="font-size: 2rem;">Galeri</h2>
+            <h2 class="serif section-title">Galeri</h2>
             
             <div class="gallery-grid">
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
@@ -520,60 +433,63 @@
         <div id="imageModal" class="modal" onclick="closeModal()">
             <span class="close-btn">&times;</span>
             <img class="modal-content" id="img01" onclick="toggleZoom(event)">
+            <div style="text-align: center; color: #ccc; margin-top: 10px; font-size: 0.9rem;">Ketuk gambar untuk perbesar/perkecil</div>
         </div>
 
-        <!-- Amplop Digital & Dresscode -->
+        <!-- Amplop Digital -->
         <section id="amplop">
-            <h2 class="serif" style="font-size: 2rem;">Tanda Kasih</h2>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 30px;">Doa restu Anda merupakan karunia yang sangat berarti. Namun jika Anda ingin memberikan tanda kasih, dapat melalui fitur di bawah ini:</p>
+            <h2 class="serif section-title">Tanda Kasih</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 30px;">Kehadiran dan doa restu Anda adalah anugerah terindah. Namun jika Anda ingin memberikan tanda kasih, dapat melalui:</p>
             
             <div class="wallet-card">
-                <p style="margin:0; text-transform:uppercase; font-size: 0.8rem;">BCA - Orchid Evangelica Waskito</p>
+                <p style="margin:0; text-transform:uppercase; font-size: 0.8rem; letter-spacing: 1px;">BCA</p>
                 <div class="rekening" id="rek1">1234567890</div>
+                <p style="margin: 0 0 15px 0; font-size: 0.8rem;">Orchid Evangelica Waskito</p>
                 <button class="btn-outline" style="padding: 8px 20px; font-size: 0.8rem;" onclick="copyRekening('rek1')">Salin Rekening</button>
             </div>
 
             <div class="wallet-card">
-                <p style="margin:0; text-transform:uppercase; font-size: 0.8rem;">Mandiri - Khabibi Amrulloh</p>
+                <p style="margin:0; text-transform:uppercase; font-size: 0.8rem; letter-spacing: 1px;">Mandiri</p>
                 <div class="rekening" id="rek2">0987654321</div>
+                <p style="margin: 0 0 15px 0; font-size: 0.8rem;">Khabibi Amrulloh</p>
                 <button class="btn-outline" style="padding: 8px 20px; font-size: 0.8rem;" onclick="copyRekening('rek2')">Salin Rekening</button>
             </div>
         </section>
 
-        <!-- Konfirmasi Kehadiran (RSVP Minimalist) -->
+        <!-- Konfirmasi Kehadiran & Buku Tamu (Netlify Forms) -->
         <section id="rsvp">
-            <h2 class="serif" style="font-size: 2rem;">Buku Tamu & RSVP</h2>
-            <p style="font-size: 0.9rem; color: #666;">Kami menantikan kehadiran Anda di hari bahagia kami.</p>
+            <h2 class="serif section-title">Kehadiran</h2>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 40px;">Sebuah kehormatan bagi kami apabila Anda berkenan hadir.</p>
             
             <form class="rsvp-form" name="buku-tamu" method="POST" data-netlify="true">
                 <div class="form-group">
-                    <label for="nama">Nama & Keluarga</label>
-                    <input type="text" id="nama" name="nama" required placeholder="Contoh: Bapak Andi & Keluarga">
+                    <label for="nama">Nama Anda</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap">
                 </div>
 
                 <div class="form-group">
-                    <label for="kehadiran">Kehadiran</label>
+                    <label for="kehadiran">Konfirmasi Kehadiran</label>
                     <select id="kehadiran" name="kehadiran" required>
-                        <option value="" disabled selected>Pilih status kehadiran</option>
-                        <option value="Hadir">Saya akan hadir</option>
+                        <option value="" disabled selected>Pilih kehadiran</option>
+                        <option value="Hadir">Ya, saya akan hadir</option>
                         <option value="Tidak Hadir">Maaf, saya tidak bisa hadir</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="pesan">Pesan & Harapan</label>
-                    <textarea id="pesan" name="pesan" rows="3" required placeholder="Tuliskan sesuatu untuk kami..."></textarea>
+                    <label for="pesan">Pesan & Doa</label>
+                    <textarea id="pesan" name="pesan" rows="3" required placeholder="Tuliskan sesuatu..."></textarea>
                 </div>
 
                 <button type="submit" class="btn-solid">Kirim Pesan</button>
             </form>
         </section>
 
-        <!-- Footer Berdasarkan Referensi -->
+        <!-- Footer -->
         <footer>
             <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Orchid & Khabibi" class="footer-photo">
-            <h2 class="footer-names">Orchid<br><span style="font-family: 'Montserrat', sans-serif; font-size: 1rem; font-style: normal; letter-spacing: 2px;">and</span><br>Khabibi</h2>
-            <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.7;">Dengan hangat, kami menantikan kehadiran Anda.</p>
+            <h2 class="serif footer-names">Orchid<br><span style="font-family: 'Montserrat', sans-serif; font-size: 1rem; font-style: italic; letter-spacing: 1px;">and</span><br>Khabibi</h2>
+            <p style="font-size: 0.7rem; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; color: #999;">Kami menanti kehadiran Anda</p>
         </footer>
 
     </div>
@@ -593,7 +509,6 @@
         function openInvitation() {
             const welcomePage = document.getElementById('welcome-page');
             const mainContent = document.getElementById('main-content');
-            welcomePage.style.transition = "opacity 0.8s ease";
             welcomePage.style.opacity = 0;
             setTimeout(() => {
                 welcomePage.style.display = 'none';
@@ -602,12 +517,37 @@
             }, 800);
         }
 
-        // 3. Countdown Timer (Menuju 9 Agustus 2026)
-        const countDownDate = new Date("Aug 9, 2026 18:30:00").getTime();
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+        // 3. Fungsi Pop-up Galeri (Lightbox)
+        function openModal(imageSrc) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("img01");
+            modalImg.classList.remove("zoomed");
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+        // Fungsi Menutup Modal
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Fungsi Zoom ganda di dalam pop-up
+        function toggleZoom(event) {
+            event.stopPropagation(); 
+            const img = document.getElementById("img01");
+            img.classList.toggle("zoomed");
+        }
+
+        // 4. Fungsi Salin Nomor Rekening
+        function copyRekening(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Nomor rekening berhasil disalin: " + textToCopy);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
