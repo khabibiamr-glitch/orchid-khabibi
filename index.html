@@ -170,19 +170,14 @@
             transition: transform 0.4s ease;
         }
 
-        /* Overlay transparan bertuliskan "Perbesar" */
+        /* Overlay transparan tanpa teks */
         .gallery-item .overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.3); /* Sedikit digelapkan agar elegan */
             opacity: 0;
             transition: opacity 0.3s ease;
-            pointer-events: none; /* Agar klik tetap menembus ke gambar */
+            pointer-events: none;
         }
 
         .gallery-item:hover img {
@@ -204,7 +199,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9); 
-            overflow: auto; /* Memungkinkan scroll jika gambar di-zoom besar */
+            overflow: auto;
         }
 
         .modal-content {
@@ -214,21 +209,20 @@
             max-height: 80vh;
             border-radius: 10px;
             transition: transform 0.3s ease;
-            cursor: zoom-in; /* Mengubah kursor jadi ikon zoom in */
+            cursor: zoom-in;
             object-fit: contain;
         }
 
-        /* Kelas yang ditambahkan saat foto di-klik untuk zoom 2x lipat */
         .modal-content.zoomed {
             transform: scale(2);
             cursor: zoom-out;
-            max-height: none; /* Membebaskan tinggi agar bisa di-scroll */
+            max-height: none;
             margin-top: 50px;
             margin-bottom: 50px;
         }
 
         .close-btn {
-            position: fixed; /* Fixed agar selalu terlihat meski di-scroll */
+            position: fixed;
             top: 20px;
             right: 35px;
             color: #f1f1f1;
@@ -292,7 +286,7 @@
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .gallery-item img { height: 180px; }
             .modal-content { max-width: 100%; }
-            .modal-content.zoomed { transform: scale(2.5); } /* Zoom lebih besar di HP */
+            .modal-content.zoomed { transform: scale(2.5); }
         }
     </style>
 </head>
@@ -357,35 +351,35 @@
             <p>Momen kebersamaan kami yang penuh makna menuju hari bahagia.</p>
             
             <div class="gallery-grid">
-                <!-- Dibungkus dengan class gallery-item untuk memunculkan overlay -->
+                <!-- Tulisan dihapus dari dalam .overlay -->
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
                     <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 1">
-                    <div class="overlay">🔍 Perbesar</div>
+                    <div class="overlay"></div>
                 </div>
                 
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
                     <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 2">
-                    <div class="overlay">🔍 Perbesar</div>
+                    <div class="overlay"></div>
                 </div>
 
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
                     <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 3">
-                    <div class="overlay">🔍 Perbesar</div>
+                    <div class="overlay"></div>
                 </div>
 
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
                     <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 4">
-                    <div class="overlay">🔍 Perbesar</div>
+                    <div class="overlay"></div>
                 </div>
 
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
                     <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 5">
-                    <div class="overlay">🔍 Perbesar</div>
+                    <div class="overlay"></div>
                 </div>
 
                 <div class="gallery-item" onclick="openModal('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27')">
                     <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 6">
-                    <div class="overlay">🔍 Perbesar</div>
+                    <div class="overlay"></div>
                 </div>
             </div>
         </section>
@@ -393,7 +387,6 @@
         <!-- Elemen Pop-up (Lightbox) -->
         <div id="imageModal" class="modal" onclick="closeModal()">
             <span class="close-btn">&times;</span>
-            <!-- Menambahkan onclick khusus untuk gambar agar bisa di-zoom lebih dalam -->
             <img class="modal-content" id="img01" onclick="toggleZoom(event)">
             <div style="text-align: center; color: #ccc; margin-top: 10px; font-size: 0.9rem;">Ketuk gambar untuk perbesar/perkecil</div>
         </div>
@@ -489,7 +482,6 @@
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("img01");
             
-            // Hapus efek zoom sebelumnya jika ada
             modalImg.classList.remove("zoomed");
             
             modal.style.display = "block";
@@ -504,7 +496,6 @@
 
         // Fungsi Zoom ganda di dalam pop-up
         function toggleZoom(event) {
-            // Mencegah klik menyebar ke latar belakang (yang akan menutup modal)
             event.stopPropagation(); 
             const img = document.getElementById("img01");
             img.classList.toggle("zoomed");
