@@ -9,9 +9,9 @@
     
     <style>
         :root {
-            --bg-color: #FAF7F2; /* Warna krem lembut seperti di referensi */
-            --text-color: #2A2A2A; /* Hitam arang */
-            --dark-bg: #1A1A1A; /* Latar gelap untuk footer */
+            --bg-color: #FAF7F2; 
+            --text-color: #2A2A2A; 
+            --dark-bg: #1A1A1A; 
         }
 
         body {
@@ -88,6 +88,21 @@
             color: var(--bg-color);
         }
 
+        .btn-solid {
+            background-color: var(--dark-bg);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-solid:hover { background-color: #333; }
+
         /* --- Main Content --- */
         #main-content {
             display: none;
@@ -105,21 +120,20 @@
             margin-bottom: 40px;
         }
 
-        /* Hero Cover (Sesuai Referensi Foto Paling Kiri) */
+        /* Hero Cover */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            /* Filter gelap & hitam putih bawaan CSS untuk foto utama */
             background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.8) 100%), url('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27');
             background-size: cover;
             background-position: center;
             padding-bottom: 10vh;
             color: white;
             background-color: #333;
-            background-blend-mode: luminosity; /* Membuat foto jadi hitam putih */
+            background-blend-mode: luminosity; 
         }
 
         .hero h1 {
@@ -135,14 +149,13 @@
             text-transform: uppercase;
         }
 
-        /* Divider & Calendar Visuals */
         .divider {
             font-style: italic;
             color: #999;
             margin: 40px 0;
         }
 
-        /* Timeline (Event Details Sesuai Referensi Tengah) */
+        /* Timeline */
         .timeline {
             position: relative;
             max-width: 300px;
@@ -162,7 +175,7 @@
             margin-bottom: 50px;
             position: relative;
             z-index: 1;
-            background-color: var(--bg-color); /* Menutupi garis vertikal */
+            background-color: var(--bg-color); 
             padding: 10px 0;
         }
 
@@ -205,15 +218,15 @@
             object-fit: cover;
             display: block;
             transition: 0.5s ease;
-            filter: grayscale(100%); /* Efek monokrom */
+            filter: grayscale(100%); 
         }
 
         .gallery-item:hover img {
-            filter: grayscale(0%); /* Berwarna saat dihover */
+            filter: grayscale(0%); 
             transform: scale(1.05);
         }
 
-        /* Modal Lightbox & Zoom Ganda */
+        /* Modal Lightbox */
         .modal {
             display: none; 
             position: fixed;
@@ -232,7 +245,7 @@
             transition: transform 0.3s ease;
             cursor: zoom-in;
             object-fit: contain;
-            filter: grayscale(0%); /* Saat diperbesar, tampil berwarna */
+            filter: grayscale(0%); 
         }
 
         .modal-content.zoomed {
@@ -268,7 +281,7 @@
             margin: 10px 0;
         }
 
-        /* RSVP Form Minimalist (Sesuai Referensi Kanan) */
+        /* RSVP Form */
         .rsvp-form {
             text-align: left;
             margin-top: 40px;
@@ -305,23 +318,7 @@
             border-bottom: 1px solid var(--text-color);
         }
 
-        .btn-solid {
-            background-color: var(--dark-bg);
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-size: 0.9rem;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .btn-solid:hover { background-color: #333; }
-
-        /* Footer (Sesuai Referensi Kanan Bawah) */
+        /* Footer */
         footer {
             background-color: var(--dark-bg);
             color: white;
@@ -366,7 +363,8 @@
             <div id="guest-name" class="guest-name">Tamu Undangan</div>
         </div>
 
-        <button class="btn-outline" onclick="openInvitation()">Buka Undangan</button>
+        <!-- Tombol diperbarui menggunakan ID untuk JavaScript (Mencegah error di GitHub Pages) -->
+        <button id="btn-buka" class="btn-solid">Buka Undangan</button>
     </div>
 
     <!-- 2. Main Invitation Content -->
@@ -456,7 +454,7 @@
             </div>
         </section>
 
-        <!-- Konfirmasi Kehadiran & Buku Tamu (Netlify Forms) -->
+        <!-- Konfirmasi Kehadiran & Buku Tamu (Hanya Bekerja di Netlify) -->
         <section id="rsvp">
             <h2 class="serif section-title">Kehadiran</h2>
             <p style="font-size: 0.9rem; color: #666; margin-bottom: 40px;">Sebuah kehormatan bagi kami apabila Anda berkenan hadir.</p>
@@ -481,7 +479,7 @@
                     <textarea id="pesan" name="pesan" rows="3" required placeholder="Tuliskan sesuatu..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-solid">Kirim Pesan</button>
+                <button type="submit" class="btn-solid" style="width: 100%;">Kirim Pesan</button>
             </form>
         </section>
 
@@ -505,16 +503,21 @@
             }
         });
 
-        // 2. Fungsi Buka Undangan
-        function openInvitation() {
-            const welcomePage = document.getElementById('welcome-page');
-            const mainContent = document.getElementById('main-content');
-            welcomePage.style.opacity = 0;
-            setTimeout(() => {
-                welcomePage.style.display = 'none';
-                mainContent.style.display = 'block';
-                window.scrollTo(0, 0);
-            }, 800);
+        // 2. Fungsi Buka Undangan (Menggunakan Event Listener agar aman dari blokir CSP)
+        const btnBuka = document.getElementById('btn-buka');
+        if (btnBuka) {
+            btnBuka.addEventListener('click', function() {
+                const welcomePage = document.getElementById('welcome-page');
+                const mainContent = document.getElementById('main-content');
+                
+                welcomePage.style.opacity = '0';
+                
+                setTimeout(() => {
+                    welcomePage.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    window.scrollTo(0, 0);
+                }, 800);
+            });
         }
 
         // 3. Fungsi Pop-up Galeri (Lightbox)
