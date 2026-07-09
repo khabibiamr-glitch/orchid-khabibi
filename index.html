@@ -37,7 +37,6 @@
             align-items: center;
             z-index: 9999;
             text-align: center;
-            /* Menggunakan Trik Direct Link Google Drive */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27');
             background-size: cover;
             background-position: center;
@@ -104,7 +103,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Menggunakan Trik Direct Link Google Drive */
             background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27');
             background-size: cover;
             background-position: center;
@@ -168,6 +166,52 @@
 
         .gallery-grid img:hover {
             transform: scale(1.05);
+        }
+
+        /* CSS untuk Pop-up (Lightbox) Galeri */
+        .modal {
+            display: none; /* Sembunyikan secara default */
+            position: fixed;
+            z-index: 10000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Latar belakang gelap transparan */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            animation: zoomIn 0.4s; /* Animasi saat pop-up terbuka */
+            object-fit: contain;
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            cursor: pointer;
         }
 
         /* Digital Envelope */
@@ -281,14 +325,23 @@
             <p>Momen kebersamaan kami yang penuh makna menuju hari bahagia.</p>
             
             <div class="gallery-grid">
-                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 1">
-                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 2">
-                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 3">
-                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 4">
-                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 5">
-                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 6">
+                <!-- Menambahkan onclick="openModal(this.src)" agar saat diklik pop-up terbuka -->
+                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 1" onclick="openModal(this.src)">
+                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 2" onclick="openModal(this.src)">
+                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 3" onclick="openModal(this.src)">
+                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 4" onclick="openModal(this.src)">
+                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 5" onclick="openModal(this.src)">
+                <img src="https://lh3.googleusercontent.com/d/1OUi4CLnYoYKB1RrJNISYkafaGcXy-P27" alt="Galeri 6" onclick="openModal(this.src)">
             </div>
         </section>
+
+        <!-- Elemen Pop-up (Lightbox) -->
+        <div id="imageModal" class="modal" onclick="closeModal()">
+            <!-- Tombol Close (X) -->
+            <span class="close-btn">&times;</span>
+            <!-- Gambar yang diperbesar -->
+            <img class="modal-content" id="img01">
+        </div>
 
         <!-- Amplop Digital -->
         <section id="amplop">
@@ -376,7 +429,21 @@
             }, 800);
         }
 
-        // 3. Fungsi Salin Nomor Rekening
+        // 3. Fungsi Pop-up Galeri (Lightbox)
+        function openModal(imageSrc) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("img01");
+            
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // 4. Fungsi Salin Nomor Rekening
         function copyRekening(elementId) {
             const textToCopy = document.getElementById(elementId).innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
